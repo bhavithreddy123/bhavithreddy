@@ -1,0 +1,172 @@
+[2~<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exam Registration Form</title>
+  <style>
+    :root{
+      --bg:#0f172a; /* slate-900 */
+      --panel:#111827; /* gray-900 */
+      --muted:#94a3b8; /* slate-400 */
+      --text:#e5e7eb; /* gray-200 */
+      --accent:#22c55e; /* green-500 */
+      --danger:#ef4444; /* red-500 */
+      --ring:#60a5fa; /* blue-400 */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 10% -10%, #1e293b 0%, rgba(30,41,59,0) 60%),
+                  radial-gradient(800px 500px at 110% 10%, #0ea5e9 0%, rgba(14,165,233,0) 50%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.4;
+    }
+    .container{max-width:960px;margin:40px auto;padding:24px}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    header h1{font-size:clamp(1.4rem,2.2vw,2rem);margin:0}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,.35);
+      backdrop-filter: blur(6px);
+    }
+    .grid{display:grid; gap:16px}
+    @media (min-width:720px){
+      .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    }
+    label{display:block;font-weight:600;margin-bottom:6px}
+    .help{color:var(--muted);font-size:.9rem}
+    input,select,textarea{
+      width:100%; padding:12px 14px; border-radius:12px;
+      border:1px solid rgba(255,255,255,.15); background:#0b1220; color:var(--text);
+      outline: none; transition:border .2s, box-shadow .2s;
+    }
+    input:focus,select:focus,textarea:focus{
+      border-color:var(--ring); box-shadow:0 0 0 3px rgba(96,165,250,.25);
+    }
+    .row{display:flex; gap:10px; align-items:center}
+    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:8px}
+    button{
+      appearance:none; border:none; padding:12px 16px; border-radius:12px; cursor:pointer; font-weight:700;
+    }
+    .btn-primary{background:var(--accent); color:#052e16}
+    .btn-secondary{background:#1f2937; color:var(--text); border:1px solid rgba(255,255,255,.12)}
+    .note{font-size:.9rem;color:var(--muted)}
+    .error{color:var(--danger); font-size:.9rem; margin-top:6px}
+    .required::after{content:" *"; color:var(--danger);}
+    .banner{display:none; margin-bottom:14px; padding:12px 14px; border-radius:12px; background:#052e16; color:#bbf7d0; border:1px solid #166534}
+    .divider{height:1px;background:rgba(255,255,255,.08);margin:10px 0 18px}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Exam Registration</h1>
+      <p class="note">Fields marked with <span style="color:var(--danger)">*</span> are required.</p>
+    </header>
+
+    <div id="banner" class="banner" role="status" aria-live="polite">Your registration was submitted successfully. (Demo only)</div>
+
+    <form id="examForm" class="card" novalidate>
+      <section class="grid two">
+        <div>
+          <label class="required" for="fullName">Full Name</label>
+          <input id="fullName" name="fullName" type="text" required minlength="3" placeholder="Jane Doe" />
+          <div class="error" data-error-for="fullName"></div>
+        </div>
+        <div>
+          <label class="required" for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="jane@example.com" />
+          <div class="error" data-error-for="email"></div>
+        </div>
+        <div>
+          <label class="required" for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" required inputmode="tel" pattern="^\+?[0-9\s-]{7,15}$" placeholder="+91 98765 43210" />
+          <div class="error" data-error-for="phone"></div>
+        </div>
+        <div>
+          <label class="required" for="dob">Date of Birth</label>
+          <input id="dob" name="dob" type="date" required />
+          <div class="error" data-error-for="dob"></div>
+        </div>
+        <div>
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender">
+            <option value="">Prefer not to say</option>
+            <option>Female</option>
+            <option>Male</option>
+            <option>Non-binary</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="required" for="idType">ID Type</label>
+          <select id="idType" name="idType" required>
+            <option value="">Choose…</option>
+            <option>Aadhaar</option>
+            <option>Passport</option>
+            <option>Driving Licence</option>
+            <option>Voter ID</option>
+            <option>Other</option>
+          </select>
+          <div class="error" data-error-for="idType"></div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section class="grid two">
+        <div>
+          <label class="required" for="exam">Exam</label>
+          <select id="exam" name="exam" required>
+            <option value="">Select an exam</option>
+            <option value="jee">JEE Main</option>
+            <option value="neet">NEET</option>
+            <option value="gate">GATE</option>
+            <option value="cat">CAT</option>
+            <option value="custom">Other</option>
+          </select>
+          <div class="error" data-error-for="exam"></div>
+        </div>
+        <div>
+          <label class="required" for="session">Session</label>
+          <select id="session" name="session" required>
+            <option value="">Choose session</option>
+            <option>January 2026</option>
+            <option>April 2026</option>
+            <option>July 2026</option>
+            <option>October 2026</option>
+          </select>
+          <div class="error" data-error-for="session"></div>
+        </div>
+        <div>
+          <label class="required" for="center">Preferred Exam City</label>
+          <input id="center" name="center" list="cities" placeholder="Start typing…" required />
+          <datalist id="cities">
+            <option value="Mumbai"></option>
+            <option value="Delhi"></option>
+            <option value="Bengaluru"></option>
+            <option value="Chennai"></option>
+            <option value="Hyderabad"></option>
+            <option value="Kolkata"></option>
+            <option value="Pune"></option>
+            <option value="Ahmedabad"></option>
+          </datalist>
+          <div class="error" data-error-for="center"></div>
+        </div>
+        <div>
+          <label for="subjects">Subjects (choose up to 3)</label>
+          <select id="subjects" name="subjects" multiple size="4" aria-describedby="subjectsHelp">
+            <option>Physics</option>
+            <option>Chemistry</option>
+            <option>Mathematics</option>
+            <option>Biology</option>
+            <option>English</option>
+            <option>Computer Science</option>
+          </select>
+          <p id="subjectsHelp" class="help">Hold Ctrl/⌘ to select mul
