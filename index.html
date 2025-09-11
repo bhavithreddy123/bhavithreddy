@@ -38,6 +38,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>ECET_Registration</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>ECET Registration Form</h2>
+  <form id="ecetForm">
+    <label>First Name: <input type="text" id="fname" required></label>
+    <label>Last Name: <input type="text" id="lname" required></label>
+    <label>Father's Name: <input type="text" id="dad" required></label>
+    <label>Mother's Name: <input type="text" id="mother" required></label>
+    <label>DOB: <input type="date" id="dob" required></label>
+    <label>Gender:
+      <select id="gender" required>
+        <option value="">Select</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+    </label>
+    <label>Address: <textarea id="address" required></textarea></label>
+    <label>Email: <input type="email" id1="email" required></label>
+    <label>Phone: <input type="text" id="phone" required></label>
+    <label>Education: <input type="text" id="education" required></label>
+    <label>Photo: <input type="file" id="photo" accept="image/*" required></label>
+    <label>Signature: <input type="file" id="sign" accept="image/*" required></label>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <title>ECET Registration</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -69,4 +105,20 @@
   <script src="script.js"></script>
 </body>
 </html>
+[A[A[A[D[A[A[A[A[A[B[B[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C
 
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[B[B[C[C[C[C[C[C[C[C[C[C[C[C[C[B[B[B[B[B[C[C[C[C[C[C[C[C[C[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B<!DOCTYPE html>
+<html>
+<body>
+  <form action="/submit" method="post">
+    Name: <input type="text" name="name"><br>
+    Email: <input type="email" name="email"><br>
+    Password: <input type="password" name="password"><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
